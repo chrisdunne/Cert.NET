@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cert.NET", "SSL.NET\Cert.NET.csproj", "{5260603E-1519-49CF-81ED-F6506B9AD942}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cert.NET", "Cert.NET\Cert.NET.csproj", "{5260603E-1519-49CF-81ED-F6506B9AD942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cert.NET.Tests", "SSL.NET.Tests\Cert.NET.Tests.csproj", "{541B3BB9-CA15-4049-AA0A-C0B376FCA4D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cert.NET.Tests", "Cert.NET.Tests\Cert.NET.Tests.csproj", "{541B3BB9-CA15-4049-AA0A-C0B376FCA4D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

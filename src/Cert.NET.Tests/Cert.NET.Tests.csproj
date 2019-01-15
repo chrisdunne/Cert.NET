@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSL.NET\Cert.NET.csproj">
+    <ProjectReference Include="..\Cert.NET\Cert.NET.csproj">
       <Project>{5260603e-1519-49cf-81ed-f6506b9ad942}</Project>
       <Name>Cert.NET</Name>
     </ProjectReference>
