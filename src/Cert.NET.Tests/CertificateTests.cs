@@ -9,14 +9,14 @@ namespace Cert.NET.Tests
         [Test]
         public void Certificate_WhenInstantiated_ReturnCert()
         {
-            string input = "www.chrisdunne.net";
+            string input = "chrisdunne.net";
             var output = new Certificate(input);
 
             Assert.IsInstanceOf(typeof(Certificate), output);
         }
 
         [Test]
-        public void Certificate_WhenGetCert_ReturnCert([Values("www.chrisdunne.net", "localhost")]string input)
+        public void Certificate_WhenGetCert_ReturnCert([Values("chrisdunne.net", "localhost")]string input)
         {
             var output = Certificate.GetCertificate(input);
 
@@ -26,7 +26,7 @@ namespace Cert.NET.Tests
         [Test]
         public void Certificate_WhenGetPublic_ReturnKey()
         {
-            Certificate cert = new Certificate("www.chrisdunne.net");
+            Certificate cert = new Certificate("chrisdunne.net");
             string output = cert.GetPublicKey();
 
             Assert.IsNotEmpty(output, "Public Key is empty");
@@ -35,7 +35,7 @@ namespace Cert.NET.Tests
         [Test]
         public void Certificate_WhenGetPrivate_ReturnKey()
         {
-            Certificate cert = new Certificate("www.chrisdunne.net");
+            Certificate cert = new Certificate("chrisdunne.net");
             string output = cert.GetPrivateKey();
 
             Assert.IsNotEmpty(output, "Private Key is empty");
@@ -44,7 +44,7 @@ namespace Cert.NET.Tests
         [Test]
         public void Certificate_WhenGetCAB_ReturnKey()
         {
-            Certificate cert = new Certificate("www.chrisdunne.net");
+            Certificate cert = new Certificate("chrisdunne.net");
             string output = cert.GetCABundle();
 
             Assert.IsNotEmpty(output, "CA Bundle is empty");

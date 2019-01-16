@@ -17,7 +17,7 @@ namespace Cert.NET
 
             store.Open(OpenFlags.OpenExistingOnly);
 
-            var cert = store.Certificates.Find(X509FindType.FindBySubjectName, name, true);
+            var cert = store.Certificates.Find(X509FindType.FindBySubjectName, name, false);
 
             if (cert.Count == 0) return null;
 
