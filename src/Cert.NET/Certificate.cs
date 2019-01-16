@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Cert.NET
 {
@@ -26,7 +28,11 @@ namespace Cert.NET
 
         public string GetPublicKey()
         {
-            return "Public Key";
+            var sb = new StringBuilder();
+            sb.AppendLine("-----BEGIN CERTIFICATE-----");
+            sb.AppendLine(Convert.ToBase64String(_cert.Export(X509ContentType.Cert)/*, Base64FormattingOptions.InsertLineBreaks*/));
+            sb.AppendLine("-----END CERTIFICATE-----");
+            return sb.ToString();
         }
 
         public string GetPrivateKey()

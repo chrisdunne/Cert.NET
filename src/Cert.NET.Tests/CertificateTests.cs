@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Cert.NET.Tests
@@ -30,6 +31,8 @@ namespace Cert.NET.Tests
             string output = cert.GetPublicKey();
 
             Assert.IsNotEmpty(output, "Public Key is empty");
+            StringAssert.Contains("-----BEGIN CERTIFICATE-----", output);
+            StringAssert.Contains("-----END CERTIFICATE-----", output);
         }
 
         [Test]
