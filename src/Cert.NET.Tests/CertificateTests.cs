@@ -16,11 +16,11 @@ namespace Cert.NET.Tests
         }
 
         [Test]
-        public void Certificate_WhenGetCert_ReturnCert()
+        public void Certificate_WhenGetCert_ReturnCert([Values("www.chrisdunne.net", "localhost")]string input)
         {
-            string input = "www.chrisdunne.net";
             var output = Certificate.GetCertificate(input);
-            Assert.IsInstanceOf(typeof(X509Certificate2), output);
+
+            Assert.IsTrue(output == null || output.GetType() == typeof(X509Certificate2));
         }
 
         [Test]

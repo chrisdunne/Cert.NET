@@ -19,7 +19,7 @@ namespace Cert.NET
 
             var cert = store.Certificates.Find(X509FindType.FindBySubjectName, name, true);
 
-            if (cert.Count == 0) return new X509Certificate2();
+            if (cert.Count == 0) return null;
 
             return cert[0];
         }
