@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Cert.NET.Tests
 {
@@ -6,12 +7,20 @@ namespace Cert.NET.Tests
     public class CertificateTests
     {
         [Test]
-        public void Certificate_WhenInstantiated_CreateCert()
+        public void Certificate_WhenInstantiated_ReturnCert()
         {
-            string name = "www.chrisdunne.net";
-            Certificate cert = new Certificate(name);
+            string input = "www.chrisdunne.net";
+            var output = new Certificate(input);
 
-            Assert.IsInstanceOf(typeof(Certificate), cert);
+            Assert.IsInstanceOf(typeof(Certificate), output);
+        }
+
+        [Test]
+        public void Certificate_WhenGetCert_ReturnCert()
+        {
+            string input = "www.chrisdunne.net";
+            var output = Certificate.GetCertificate(input);
+            Assert.IsInstanceOf(typeof(X509Certificate2), output);
         }
 
         [Test]

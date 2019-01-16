@@ -2,13 +2,26 @@
 
 namespace Cert.NET
 {
-    public class Certificate
+    public class Certificate : ICertificate
     {
         private X509Certificate2 _cert;
 
         public Certificate(string name)
         {
-            _cert = new X509Certificate2();
+            _cert = GetCertificate(name);
+        }
+
+        public static X509Certificate2 GetCertificate(string name)
+        {
+            X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+
+            store.Open(OpenFlags.OpenExistingOnly);
+
+            var cert = store.Certificates.Find(X509FindType.FindBySubjectName, name, true);
+
+            if (cert.Count == 0) return new X509Certificate2();
+
+            return cert[0];
         }
 
         public string GetPublicKey()
