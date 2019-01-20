@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Security;
+using System;
+using System.IO;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -37,12 +42,19 @@ namespace Cert.NET
 
         public string GetPrivateKey()
         {
-            return "Private Key";
-        }
+            RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)_cert.PrivateKey;
+            MemoryStream memoryStream = new MemoryStream();
+            TextWriter streamWriter = new StreamWriter(memoryStream);
+            PemWriter pemWriter = new PemWriter(streamWriter);
+            AsymmetricCipherKeyPair keyPair = DotNetUtilities.GetRsaKeyPair(rsa);
+            pemWriter.WriteObject(keyPair.Private);
+            streamWriter.Flush();
+            string output = Encoding.ASCII.GetString(memoryStream.GetBuffer()).Trim();
+            int index_of_footer = output.IndexOf("-----END RSA PRIVATE KEY-----");
+            memoryStream.Close();
+            streamWriter.Close();
 
-        public string GetCABundle()
-        {
-            return "CA Bundle";
+            return output.Substring(0, index_of_footer + 29);
         }
     }
 }

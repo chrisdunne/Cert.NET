@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Cert.NET.Tests
@@ -42,15 +41,8 @@ namespace Cert.NET.Tests
             string output = cert.GetPrivateKey();
 
             Assert.IsNotEmpty(output, "Private Key is empty");
-        }
-
-        [Test]
-        public void Certificate_WhenGetCAB_ReturnKey()
-        {
-            Certificate cert = new Certificate("chrisdunne.net");
-            string output = cert.GetCABundle();
-
-            Assert.IsNotEmpty(output, "CA Bundle is empty");
+            StringAssert.Contains("-----BEGIN CERTIFICATE-----", output);
+            StringAssert.Contains("-----END RSA PRIVATE KEY-----", output);
         }
 
         [Test]
